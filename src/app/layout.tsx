@@ -15,6 +15,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: APP_CONFIG.meta.title,
   description: APP_CONFIG.meta.description,
+  icons: {
+    icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/assethub_logo_favicon-V2bsr8fj1i482xcDX5DcDu4v8a2Xr8.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

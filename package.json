@@ -1,6 +1,7 @@
 {
-  "name": "studio-admin",
-  "version": "2.2.0",
+  "name": "assethub",
+  "version": "1.0.0",
+  "description": "AssetHub - Comprehensive Asset Management System",
   "private": true,
   "scripts": {
     "dev": "next dev",

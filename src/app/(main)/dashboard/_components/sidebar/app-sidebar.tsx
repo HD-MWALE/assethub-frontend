@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
-import { CircleHelp, ClipboardList, Command, Database, File, Search, Settings } from "lucide-react";
+import { CircleHelp, ClipboardList, Database, File, Search, Settings } from "lucide-react";
 import { useShallow } from "zustand/react/shallow";
 
 import {
@@ -77,9 +78,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link prefetch={false} href="/dashboard/default">
-                <Command />
-                <span className="font-semibold text-base">{APP_CONFIG.name}</span>
+              <Link prefetch={false} href="/dashboard/default" className="gap-3">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/assethub_logo_favicon-V2bsr8fj1i482xcDX5DcDu4v8a2Xr8.png"
+                  alt="AssetHub Logo"
+                  width={28}
+                  height={28}
+                  className="h-7 w-7"
+                />
+                <span className="font-bold text-base tracking-tight">{APP_CONFIG.name}</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

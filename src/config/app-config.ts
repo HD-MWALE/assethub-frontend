@@ -3,12 +3,12 @@ import packageJson from "../../package.json";
 const currentYear = new Date().getFullYear();
 
 export const APP_CONFIG = {
-  name: "Studio Admin",
+  name: "AssetHub",
   version: packageJson.version,
-  copyright: `© ${currentYear}, Studio Admin.`,
+  copyright: `© ${currentYear}, AssetHub. All rights reserved.`,
   meta: {
-    title: "Studio Admin - Modern Next.js Dashboard Starter Template",
+    title: "AssetHub - Asset Management System",
     description:
-      "Studio Admin is a modern, open-source dashboard starter template built with Next.js 16, Tailwind CSS v4, and shadcn/ui. Perfect for SaaS apps, admin panels, and internal tools—fully customizable and production-ready.",
+      "AssetHub is a comprehensive asset management platform for tracking, organizing, and maintaining company assets. Built with Next.js 16, Tailwind CSS v4, and shadcn/ui.",
   },
 };

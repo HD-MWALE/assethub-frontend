@@ -1,27 +1,23 @@
-# Next.js Admin Template with TypeScript & Shadcn UI
+# AssetHub - Comprehensive Asset Management System
 
-**Studio Admin** - Includes multiple dashboards, authentication layouts, customizable theme presets, and more.
+**AssetHub** - A complete asset management platform for tracking, organizing, and maintaining company assets with real-time insights.
 
-<img src="https://github.com/arhamkhnz/next-shadcn-admin-dashboard/blob/main/media/dashboard.png?version=5" alt="Dashboard Screenshot">
+![AssetHub Logo](https://hebbkx1anhila5yf.public.blob.vercel-storage.com/assethub_logo-X0SJoiHPakDl3iLyeOgCRvqwkqkXgF.png)
 
-Most admin templates I found, free or paid, felt cluttered, outdated, or too rigid. I built this as a cleaner alternative with features often missing in others, such as theme toggling and layout controls, while keeping the design modern, minimal, and flexible.
-
-I’ve taken design inspiration from various sources. If you’d like credit for something specific, feel free to open an issue or reach out.
-
-> **View demo:** [studio admin](https://next-shadcn-admin-dashboard.vercel.app)
-
-> [!TIP]
-> I’m also working on Nuxt.js, Svelte, and React (Vite + TanStack Router) versions of this dashboard. They’ll be live soon.
+AssetHub is built on modern web technologies to provide a seamless experience for managing assets across your organization. Track assets in real-time, schedule maintenance, manage team assignments, and generate comprehensive reports—all from one intuitive dashboard.
 
 ## Features
 
-- Built with Next.js 16, TypeScript, Tailwind CSS v4, and Shadcn UI  
-- Responsive and mobile-friendly  
-- Customizable theme presets (light/dark modes with color schemes like Tangerine, Brutalist, and more)  
-- Flexible layouts (collapsible sidebar, variable content widths)  
-- Authentication flows and screens  
-- Prebuilt dashboards (Default, CRM, Finance) with more coming soon  
-- Role-Based Access Control (RBAC) with config-driven UI and multi-tenant support *(planned)*  
+- **Complete Asset Management** - Track all company assets with detailed information and status  
+- **Maintenance Scheduling** - Schedule and monitor maintenance activities  
+- **Team Assignments** - Assign assets to team members and track usage  
+- **Location Management** - Organize assets across multiple facilities and locations  
+- **Audit Logs** - Complete activity tracking for compliance and auditing  
+- **Advanced Reports** - Generate PDF reports (Asset Register, Maintenance History, Depreciation)  
+- **Notification Rules** - Configure custom alerts and notifications  
+- **Built with Modern Stack** - Next.js 16, TypeScript, Tailwind CSS v4, and Shadcn UI  
+- **Responsive Design** - Works seamlessly on desktop, tablet, and mobile  
+- **Dark Mode Support** - Eye-friendly interface with theme customization
 
 > [!NOTE]
 > The default dashboard uses the **shadcn neutral** theme.  
