@@ -1,11 +1,13 @@
 import {
   Banknote,
+  Bell,
   Calendar,
   ChartBar,
   Fingerprint,
   Forklift,
   Gauge,
   GraduationCap,
+  History,
   Kanban,
   LayoutDashboard,
   Lock,
@@ -14,9 +16,11 @@ import {
   MapPin,
   MessageSquare,
   Package,
+  Receipt,
   ReceiptText,
   ShoppingBag,
   SquareArrowUpRight,
+  Wrench,
   Users,
 } from "lucide-react";
 
@@ -114,6 +118,36 @@ export const sidebarItems: NavGroup[] = [
         title: "Locations",
         url: "/dashboard/locations",
         icon: MapPin,
+      },
+      {
+        title: "Categories",
+        url: "/dashboard/asset-categories",
+        icon: Receipt,
+      },
+      {
+        title: "Assignments",
+        url: "/dashboard/asset-assignments",
+        icon: Forklift,
+      },
+      {
+        title: "Maintenance",
+        url: "/dashboard/maintenance",
+        icon: Wrench,
+      },
+      {
+        title: "Audit Logs",
+        url: "/dashboard/audit-logs",
+        icon: History,
+      },
+      {
+        title: "Reports",
+        url: "/dashboard/reports",
+        icon: ChartBar,
+      },
+      {
+        title: "Notifications",
+        url: "/dashboard/notification-rules",
+        icon: Bell,
       },
     ],
   },
