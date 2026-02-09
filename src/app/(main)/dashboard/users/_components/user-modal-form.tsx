@@ -120,8 +120,9 @@ export function UserModalForm({
       description={userId ? "Update user information" : "Add a new team member"}
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
+          <div className="space-y-6 flex-1">
+            <div className="grid grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="firstName"
@@ -211,9 +212,10 @@ export function UserModalForm({
                 </FormItem>
               )}
             />
+            </div>
           </div>
 
-          <div className="flex justify-end gap-3">
+          <div className="flex justify-end gap-3 mt-6 pt-6 border-t">
             <Button
               type="button"
               variant="outline"

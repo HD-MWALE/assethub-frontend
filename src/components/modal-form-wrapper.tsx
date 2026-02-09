@@ -26,12 +26,12 @@ export function ModalFormWrapper({
 }: ModalFormWrapperProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl">
-        <DialogHeader>
+      <DialogContent className="max-w-4xl w-full h-auto max-h-[90vh] flex flex-col">
+        <DialogHeader className="shrink-0">
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
-        <div className="mt-4">{children}</div>
+        <div className="flex-1 overflow-y-auto px-2">{children}</div>
       </DialogContent>
     </Dialog>
   );

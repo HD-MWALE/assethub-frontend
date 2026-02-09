@@ -117,7 +117,8 @@ export function LocationModalForm({
       description={locationId ? "Update location information" : "Add a new facility or office"}
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
+          <div className="space-y-6 flex-1">
           <FormField
             control={form.control}
             name="name"
@@ -188,6 +189,7 @@ export function LocationModalForm({
                 </FormItem>
               )}
             />
+            />
           </div>
 
           <FormField
@@ -203,8 +205,9 @@ export function LocationModalForm({
               </FormItem>
             )}
           />
+          </div>
 
-          <div className="flex justify-end gap-3">
+          <div className="flex justify-end gap-3 mt-6 pt-6 border-t">
             <Button
               type="button"
               variant="outline"
