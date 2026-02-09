@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Plus, Pencil, Trash2, Eye } from "lucide-react";
 import { toast } from "sonner";
 
@@ -26,11 +25,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import { apiClient, type Asset } from "@/lib/api-client";
 import { cn } from "@/lib/utils";
+import { AssetModalForm } from "./_components/asset-modal-form";
 
 export default function AssetsPage() {
   const [assets, setAssets] = useState<Asset[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingAssetId, setEditingAssetId] = useState<string | undefined>();
 
   useEffect(() => {
     loadAssets();
@@ -90,12 +92,10 @@ export default function AssetsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Assets</h1>
           <p className="text-muted-foreground">Manage your organization's assets</p>
         </div>
-        <Link href="/dashboard/assets/new">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            New Asset
-          </Button>
-        </Link>
+        <Button onClick={() => { setEditingAssetId(undefined); setModalOpen(true); }}>
+          <Plus className="mr-2 h-4 w-4" />
+          New Asset
+        </Button>
       </div>
 
       <Card>
@@ -113,9 +113,9 @@ export default function AssetsPage() {
           ) : assets.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-8">
               <div className="text-muted-foreground mb-4">No assets found</div>
-              <Link href="/dashboard/assets/new">
-                <Button variant="outline">Create First Asset</Button>
-              </Link>
+              <Button variant="outline" onClick={() => { setEditingAssetId(undefined); setModalOpen(true); }}>
+                Create First Asset
+              </Button>
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -146,16 +146,16 @@ export default function AssetsPage() {
                       <TableCell>${asset.purchasePrice?.toFixed(2) || "—"}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex items-center justify-end gap-2">
-                          <Link href={`/dashboard/assets/${asset.id}`}>
-                            <Button variant="ghost" size="sm">
-                              <Eye className="h-4 w-4" />
-                            </Button>
-                          </Link>
-                          <Link href={`/dashboard/assets/${asset.id}/edit`}>
-                            <Button variant="ghost" size="sm">
-                              <Pencil className="h-4 w-4" />
-                            </Button>
-                          </Link>
+                          <Button variant="ghost" size="sm" onClick={() => { setEditingAssetId(asset.id); setModalOpen(true); }} title="View/Edit">
+                            <Eye className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => { setEditingAssetId(asset.id); setModalOpen(true); }}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
                           <Button
                             variant="ghost"
                             size="sm"
@@ -194,6 +194,13 @@ export default function AssetsPage() {
           </div>
         </AlertDialogContent>
       </AlertDialog>
+
+      <AssetModalForm
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        assetId={editingAssetId}
+        onSuccess={loadAssets}
+      />
     </div>
   );
 }

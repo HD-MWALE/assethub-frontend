@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Plus, Pencil, Trash2, Eye } from "lucide-react";
 import { toast } from "sonner";
 
@@ -26,11 +25,14 @@ import {
 } from "@/components/ui/alert-dialog";
 import { apiClient, type UserData } from "@/lib/api-client";
 import { cn } from "@/lib/utils";
+import { UserModalForm } from "./_components/user-modal-form";
 
 export default function UsersPage() {
   const [users, setUsers] = useState<UserData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingUserId, setEditingUserId] = useState<string | undefined>();
 
   useEffect(() => {
     loadUsers();
@@ -75,12 +77,10 @@ export default function UsersPage() {
           <h1 className="text-3xl font-bold tracking-tight">Users</h1>
           <p className="text-muted-foreground">Manage team members and permissions</p>
         </div>
-        <Link href="/dashboard/users/new">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            New User
-          </Button>
-        </Link>
+        <Button onClick={() => { setEditingUserId(undefined); setModalOpen(true); }}>
+          <Plus className="mr-2 h-4 w-4" />
+          New User
+        </Button>
       </div>
 
       <Card>
@@ -98,9 +98,9 @@ export default function UsersPage() {
           ) : users.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-8">
               <div className="text-muted-foreground mb-4">No users found</div>
-              <Link href="/dashboard/users/new">
-                <Button variant="outline">Invite First User</Button>
-              </Link>
+              <Button variant="outline" onClick={() => { setEditingUserId(undefined); setModalOpen(true); }}>
+                Create First User
+              </Button>
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -151,16 +151,16 @@ export default function UsersPage() {
                       <TableCell>{new Date(user.createdAt).toLocaleDateString()}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex items-center justify-end gap-2">
-                          <Link href={`/dashboard/users/${user.id}`}>
-                            <Button variant="ghost" size="sm">
-                              <Eye className="h-4 w-4" />
-                            </Button>
-                          </Link>
-                          <Link href={`/dashboard/users/${user.id}/edit`}>
-                            <Button variant="ghost" size="sm">
-                              <Pencil className="h-4 w-4" />
-                            </Button>
-                          </Link>
+                          <Button variant="ghost" size="sm" onClick={() => { setEditingUserId(user.id); setModalOpen(true); }} title="View/Edit">
+                            <Eye className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => { setEditingUserId(user.id); setModalOpen(true); }}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
                           <Button
                             variant="ghost"
                             size="sm"
@@ -199,6 +199,13 @@ export default function UsersPage() {
           </div>
         </AlertDialogContent>
       </AlertDialog>
+
+      <UserModalForm
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        userId={editingUserId}
+        onSuccess={loadUsers}
+      />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { toast } from "sonner";
 import { Loader2, Plus } from "lucide-react";
 
@@ -17,6 +16,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { apiClient } from "@/lib/api-client";
+import { MaintenanceModalForm } from "./_components/maintenance-modal-form";
 
 interface Maintenance {
   id: string;
@@ -36,6 +36,8 @@ export default function MaintenancePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [limit] = useState(10);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingMaintenanceId, setEditingMaintenanceId] = useState<string | undefined>();
 
   useEffect(() => {
     fetchMaintenance();
@@ -78,6 +80,11 @@ export default function MaintenancePage() {
           <h1 className="text-3xl font-bold tracking-tight">Maintenance</h1>
           <p className="text-muted-foreground">Manage asset maintenance records</p>
         </div>
+        <Button onClick={() => { setEditingMaintenanceId(undefined); setModalOpen(true); }}>
+          <Plus className="mr-2 h-4 w-4" />
+          Schedule Maintenance
+        </Button>
+      </div>
         <Link href="/dashboard/maintenance/new">
           <Button>
             <Plus className="mr-2 h-4 w-4" />
@@ -138,6 +145,13 @@ export default function MaintenancePage() {
           )}
         </CardContent>
       </Card>
+
+      <MaintenanceModalForm
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        maintenanceId={editingMaintenanceId}
+        onSuccess={fetchMaintenance}
+      />
     </div>
   );
 }

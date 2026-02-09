@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Plus, Pencil, Trash2, Eye, MapPin } from "lucide-react";
 import { toast } from "sonner";
 
@@ -25,11 +24,14 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { apiClient, type Location } from "@/lib/api-client";
+import { LocationModalForm } from "./_components/location-modal-form";
 
 export default function LocationsPage() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingLocationId, setEditingLocationId] = useState<string | undefined>();
 
   useEffect(() => {
     loadLocations();
@@ -74,12 +76,10 @@ export default function LocationsPage() {
           <h1 className="text-3xl font-bold tracking-tight">Locations</h1>
           <p className="text-muted-foreground">Manage facilities and office locations</p>
         </div>
-        <Link href="/dashboard/locations/new">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            New Location
-          </Button>
-        </Link>
+        <Button onClick={() => { setEditingLocationId(undefined); setModalOpen(true); }}>
+          <Plus className="mr-2 h-4 w-4" />
+          New Location
+        </Button>
       </div>
 
       <Card>
@@ -98,9 +98,9 @@ export default function LocationsPage() {
             <div className="flex flex-col items-center justify-center py-8">
               <MapPin className="h-12 w-12 text-muted-foreground/50 mb-4" />
               <div className="text-muted-foreground mb-4">No locations found</div>
-              <Link href="/dashboard/locations/new">
-                <Button variant="outline">Create First Location</Button>
-              </Link>
+              <Button variant="outline" onClick={() => { setEditingLocationId(undefined); setModalOpen(true); }}>
+                Create First Location
+              </Button>
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -125,16 +125,16 @@ export default function LocationsPage() {
                       <TableCell>{new Date(location.createdAt).toLocaleDateString()}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex items-center justify-end gap-2">
-                          <Link href={`/dashboard/locations/${location.id}`}>
-                            <Button variant="ghost" size="sm">
-                              <Eye className="h-4 w-4" />
-                            </Button>
-                          </Link>
-                          <Link href={`/dashboard/locations/${location.id}/edit`}>
-                            <Button variant="ghost" size="sm">
-                              <Pencil className="h-4 w-4" />
-                            </Button>
-                          </Link>
+                          <Button variant="ghost" size="sm" onClick={() => { setEditingLocationId(location.id); setModalOpen(true); }} title="View/Edit">
+                            <Eye className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => { setEditingLocationId(location.id); setModalOpen(true); }}
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
                           <Button
                             variant="ghost"
                             size="sm"
@@ -173,6 +173,13 @@ export default function LocationsPage() {
           </div>
         </AlertDialogContent>
       </AlertDialog>
+
+      <LocationModalForm
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        locationId={editingLocationId}
+        onSuccess={loadLocations}
+      />
     </div>
   );
 }
