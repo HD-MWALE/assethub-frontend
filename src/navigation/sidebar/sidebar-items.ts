@@ -11,7 +11,9 @@ import {
   Lock,
   type LucideIcon,
   Mail,
+  MapPin,
   MessageSquare,
+  Package,
   ReceiptText,
   ShoppingBag,
   SquareArrowUpRight,
@@ -48,6 +50,11 @@ export const sidebarItems: NavGroup[] = [
     id: 1,
     label: "Dashboards",
     items: [
+      {
+        title: "Overview",
+        url: "/dashboard/overview",
+        icon: LayoutDashboard,
+      },
       {
         title: "Default",
         url: "/dashboard/default",
@@ -91,6 +98,27 @@ export const sidebarItems: NavGroup[] = [
   },
   {
     id: 2,
+    label: "AssetHub",
+    items: [
+      {
+        title: "Assets",
+        url: "/dashboard/assets",
+        icon: Package,
+      },
+      {
+        title: "Users",
+        url: "/dashboard/users",
+        icon: Users,
+      },
+      {
+        title: "Locations",
+        url: "/dashboard/locations",
+        icon: MapPin,
+      },
+    ],
+  },
+  {
+    id: 3,
     label: "Pages",
     items: [
       {
@@ -121,12 +149,6 @@ export const sidebarItems: NavGroup[] = [
         title: "Invoice",
         url: "/dashboard/coming-soon",
         icon: ReceiptText,
-        comingSoon: true,
-      },
-      {
-        title: "Users",
-        url: "/dashboard/coming-soon",
-        icon: Users,
         comingSoon: true,
       },
       {
