@@ -15,16 +15,17 @@ import {
 } from "@/components/ui/command";
 
 const searchItems = [
-  { group: "Dashboards", icon: LayoutDashboard, label: "Default" },
-  { group: "Dashboards", icon: ChartBar, label: "CRM", disabled: true },
+  { group: "Dashboards", icon: LayoutDashboard, label: "Overview", url: "/dashboard/overview" },
+  { group: "Dashboards", icon: ChartBar, label: "Default", url: "/dashboard/default" },
   { group: "Dashboards", icon: Gauge, label: "Analytics", disabled: true },
-  { group: "Dashboards", icon: ShoppingBag, label: "E-Commerce", disabled: true },
-  { group: "Dashboards", icon: GraduationCap, label: "Academy", disabled: true },
-  { group: "Dashboards", icon: Forklift, label: "Logistics", disabled: true },
-  { group: "Authentication", label: "Login v1" },
-  { group: "Authentication", label: "Login v2" },
-  { group: "Authentication", label: "Register v1" },
-  { group: "Authentication", label: "Register v2" },
+  { group: "Assets", icon: ShoppingBag, label: "Assets", url: "/dashboard/assets" },
+  { group: "Assets", icon: Forklift, label: "Assignments", url: "/dashboard/asset-assignments" },
+  { group: "Assets", icon: GraduationCap, label: "Categories", url: "/dashboard/asset-categories" },
+  { group: "Management", icon: Forklift, label: "Maintenance", url: "/dashboard/maintenance" },
+  { group: "Management", icon: ChartBar, label: "Reports", url: "/dashboard/reports" },
+  { group: "Management", label: "Audit Logs", url: "/dashboard/audit-logs" },
+  { group: "Team", label: "Users", url: "/dashboard/users" },
+  { group: "Team", label: "Locations", url: "/dashboard/locations" },
 ];
 
 export function SearchDialog() {
@@ -48,13 +49,13 @@ export function SearchDialog() {
         onClick={() => setOpen(true)}
       >
         <Search className="size-4" />
-        Search
+        Search Assets
         <kbd className="inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium text-[10px]">
           <span className="text-xs">⌘</span>J
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search dashboards, users, and more…" />
+        <CommandInput placeholder="Search assets, users, locations, and more…" />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           {[...new Set(searchItems.map((item) => item.group))].map((group, i) => (
@@ -64,7 +65,17 @@ export function SearchDialog() {
                 {searchItems
                   .filter((item) => item.group === group)
                   .map((item) => (
-                    <CommandItem className="!py-1.5" key={item.label} onSelect={() => setOpen(false)}>
+                    <CommandItem 
+                      className="!py-1.5" 
+                      key={item.label} 
+                      onSelect={() => {
+                        if (item.url && !item.disabled) {
+                          window.location.href = item.url;
+                        }
+                        setOpen(false);
+                      }}
+                      disabled={item.disabled}
+                    >
                       {item.icon && <item.icon />}
                       <span>{item.label}</span>
                     </CommandItem>

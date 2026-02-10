@@ -36,27 +36,27 @@ export function DataTable({ data: initialData }: { data: z.infer<typeof sectionS
             <SelectValue placeholder="Select a view" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="outline">Outline</SelectItem>
-            <SelectItem value="past-performance">Past Performance</SelectItem>
-            <SelectItem value="key-personnel">Key Personnel</SelectItem>
-            <SelectItem value="focus-documents">Focus Documents</SelectItem>
+            <SelectItem value="outline">Assets</SelectItem>
+            <SelectItem value="past-performance">Recently Updated</SelectItem>
+            <SelectItem value="key-personnel">High Value Assets</SelectItem>
+            <SelectItem value="focus-documents">Maintenance Due</SelectItem>
           </SelectContent>
         </Select>
         <TabsList className="@4xl/main:flex hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:bg-muted-foreground/30 **:data-[slot=badge]:px-1">
-          <TabsTrigger value="outline">Outline</TabsTrigger>
+          <TabsTrigger value="outline">Assets</TabsTrigger>
           <TabsTrigger value="past-performance">
-            Past Performance <Badge variant="secondary">3</Badge>
+            Recently Updated <Badge variant="secondary">3</Badge>
           </TabsTrigger>
           <TabsTrigger value="key-personnel">
-            Key Personnel <Badge variant="secondary">2</Badge>
+            High Value Assets <Badge variant="secondary">2</Badge>
           </TabsTrigger>
-          <TabsTrigger value="focus-documents">Focus Documents</TabsTrigger>
+          <TabsTrigger value="focus-documents">Maintenance Due</TabsTrigger>
         </TabsList>
         <div className="flex items-center gap-2">
           <DataTableViewOptions table={table} />
           <Button variant="outline" size="sm">
             <Plus />
-            <span className="hidden lg:inline">Add Section</span>
+            <span className="hidden lg:inline">Add Asset</span>
           </Button>
         </div>
       </div>
@@ -67,13 +67,19 @@ export function DataTable({ data: initialData }: { data: z.infer<typeof sectionS
         <DataTablePagination table={table} />
       </TabsContent>
       <TabsContent value="past-performance" className="flex flex-col">
-        <div className="aspect-video w-full flex-1 rounded-lg border border-dashed" />
+        <div className="flex items-center justify-center aspect-video w-full flex-1 rounded-lg border border-dashed text-muted-foreground">
+          Recently updated assets timeline coming soon
+        </div>
       </TabsContent>
       <TabsContent value="key-personnel" className="flex flex-col">
-        <div className="aspect-video w-full flex-1 rounded-lg border border-dashed" />
+        <div className="flex items-center justify-center aspect-video w-full flex-1 rounded-lg border border-dashed text-muted-foreground">
+          High value assets summary coming soon
+        </div>
       </TabsContent>
       <TabsContent value="focus-documents" className="flex flex-col">
-        <div className="aspect-video w-full flex-1 rounded-lg border border-dashed" />
+        <div className="flex items-center justify-center aspect-video w-full flex-1 rounded-lg border border-dashed text-muted-foreground">
+          Maintenance schedule coming soon
+        </div>
       </TabsContent>
     </Tabs>
   );

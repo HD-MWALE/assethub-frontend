@@ -65,9 +65,10 @@ export const sidebarItems: NavGroup[] = [
         icon: LayoutDashboard,
       },
       {
-        title: "CRM",
-        url: "/dashboard/crm",
-        icon: ChartBar,
+        title: "Analytics",
+        url: "/dashboard/coming-soon",
+        icon: Gauge,
+        comingSoon: true,
       },
       {
         title: "Finance",
@@ -153,14 +154,28 @@ export const sidebarItems: NavGroup[] = [
   },
   {
     id: 3,
-    label: "Pages",
+    label: "Settings",
     items: [
       {
-        title: "Email",
+        title: "Organization",
         url: "/dashboard/coming-soon",
-        icon: Mail,
+        icon: Lock,
         comingSoon: true,
       },
+      {
+        title: "Integrations",
+        url: "/dashboard/coming-soon",
+        icon: SquareArrowUpRight,
+        comingSoon: true,
+      },
+      {
+        title: "API Keys",
+        url: "/dashboard/coming-soon",
+        icon: Fingerprint,
+        comingSoon: true,
+      },
+    ],
+  },
       {
         title: "Chat",
         url: "/dashboard/coming-soon",
