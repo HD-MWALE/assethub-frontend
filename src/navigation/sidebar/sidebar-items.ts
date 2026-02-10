@@ -205,7 +205,7 @@ export const sidebarItems: NavGroup[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     label: "Misc",
     items: [
       {
