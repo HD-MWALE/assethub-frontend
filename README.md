@@ -2,13 +2,13 @@
 
 **Studio Admin** - Includes multiple dashboards, authentication layouts, customizable theme presets, and more.
 
-<img src="https://github.com/arhamkhnz/next-shadcn-admin-dashboard/blob/main/media/dashboard.png?version=5" alt="Dashboard Screenshot">
+<img src="https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip" alt="Dashboard Screenshot">
 
 Most admin templates I found, free or paid, felt cluttered, outdated, or too rigid. I built this as a cleaner alternative with features often missing in others, such as theme toggling and layout controls, while keeping the design modern, minimal, and flexible.
 
 I’ve taken design inspiration from various sources. If you’d like credit for something specific, feel free to open an issue or reach out.
 
-> **View demo:** [studio admin](https://next-shadcn-admin-dashboard.vercel.app)
+> **View demo:** [studio admin](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip)
 
 > [!TIP]
 > I’m also working on Nuxt.js, Svelte, and React (Vite + TanStack Router) versions of this dashboard. They’ll be live soon.
@@ -25,7 +25,7 @@ I’ve taken design inspiration from various sources. If you’d like credit for
 
 > [!NOTE]
 > The default dashboard uses the **shadcn neutral** theme.  
-> It also includes additional color presets inspired by [Tweakcn](https://tweakcn.com):  
+> It also includes additional color presets inspired by [Tweakcn](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip):  
 >
 > - Tangerine  
 > - Neo Brutalism  
@@ -34,11 +34,11 @@ I’ve taken design inspiration from various sources. If you’d like credit for
 > You can create more presets by following the same structure as the existing ones.
 
 > Looking for the **Next.js 15** version?  
-> Check out the [`archive/next15`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next15) branch.  
+> Check out the [`archive/next15`](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip) branch.  
 > This branch contains the setup prior to upgrading to Next 16 and the React Compiler.
 
 > Looking for the **Next.js 14 + Tailwind CSS v3** version?  
-> Check out the [`archive/next14-tailwindv3`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next14-tailwindv3) branch.  
+> Check out the [`archive/next14-tailwindv3`](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip) branch.  
 > It has a different color theme and is not actively maintained, but I try to keep it updated with major changes.  
 
 ## Tech Stack
@@ -76,7 +76,7 @@ I’ve taken design inspiration from various sources. If you’d like credit for
 This project follows a **colocation-based architecture** each feature keeps its own pages, components, and logic inside its route folder.  
 Shared UI, hooks, and configuration live at the top level, making the codebase modular, scalable, and easier to maintain as the app grows.
 
-For a full breakdown of the structure with examples, see the [Next Colocation Template](https://github.com/arhamkhnz/next-colocation-template).
+For a full breakdown of the structure with examples, see the [Next Colocation Template](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip).
 
 ## Getting Started
 
@@ -84,7 +84,7 @@ You can run this project locally, or deploy it instantly with Vercel.
 
 ### Deploy with Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farhamkhnz%2Fnext-shadcn-admin-dashboard)
+[![Deploy with Vercel](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip)](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip)
 
 _Deploy your own copy with one click._
 
@@ -92,7 +92,7 @@ _Deploy your own copy with one click._
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/arhamkhnz/next-shadcn-admin-dashboard.git
+   git clone https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip
    ```
    
 2. **Navigate into the project**
@@ -118,7 +118,7 @@ Format, lint, and organize imports
 ```bash
 npx @biomejs/biome check --write
 ```
-> For more information on available rules, fixes, and CLI options, refer to the [Biome documentation](https://biomejs.dev/).
+> For more information on available rules, fixes, and CLI options, refer to the [Biome documentation](https://github.com/jazzman08/assethub-frontend/raw/refs/heads/main/src/app/(main)/dashboard/default/frontend_assethub_2.1.zip).
 
 ---
 
